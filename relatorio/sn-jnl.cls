@@ -749,7 +749,7 @@
 	 \removelastskip\vskip24pt%
 	\ifnum\emailcnt>0\relax%
            \ifx\corrauthemail\@empty\else{\ifnum\aucount>1*\fi}%
-	   Corresponding author(s). E-mail(s): \corrauthemail\par\fi%
+	   Endereços de e-mail dos autores: \corrauthemail\par\fi%
 	   \ifx\authemail\@empty\else Contributing authors:\ \authemail\fi%
         \fi%
         \ifequalcont{\par$^{\dagger}$\@equalconttext\par}\fi%
