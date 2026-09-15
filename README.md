@@ -1,3 +1,22 @@
+# DS-Projeto-Final-EDA
+
+Entrega do T2 para a matéria de Ciência de Dados
+
+Gabriel Uemura Naka - 241024773
+Thiago Toreto Damaceno de Souza - 241026164
+
+-------------------------------------------------------
+
+
+Dados providos publicamente pelo INMET - Instituto Nacional de Meteorologia
+https://portal.inmet.gov.br/dadoshistoricos
+Acesso em 13/09/2026, dados de 07/05/2000 - 31/08/2026
+
+
+Arquivos brutos de dados muito grandes
+compactado    1.78 GB
+descompactado 7.28 GB
+
 # Mudança climática em Bauru — estação INMET A705
 
 Projeto de ciência de dados que investiga se a temperatura e o padrão de chuvas da estação automática A705, em Bauru (SP), apresentaram tendência entre 2002 e 2025.
@@ -8,7 +27,6 @@ Há tendência estatisticamente relevante de aumento da temperatura ou mudança 
 
 ## Dados e critérios
 
-- Fonte: [Dados Históricos Anuais do INMET](https://portal.inmet.gov.br/dadoshistoricos).
 - Estação: A705 — Bauru (SP).
 - Período analisado: 2002–2025.
 - Importação esperada: 210.384 registros horários.
@@ -69,3 +87,4 @@ code .
 ```
 
 O notebook não grava esse caminho nos arquivos do projeto. Se a variável não estiver definida, `data/raw/` será usada automaticamente.
+>>>>>>> 7ded9600e8402e6ad7132fe91b05f846c45b4f83
