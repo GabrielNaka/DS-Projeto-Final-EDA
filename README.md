@@ -87,4 +87,3 @@ code .
 ```
 
 O notebook não grava esse caminho nos arquivos do projeto. Se a variável não estiver definida, `data/raw/` será usada automaticamente.
->>>>>>> 7ded9600e8402e6ad7132fe91b05f846c45b4f83
