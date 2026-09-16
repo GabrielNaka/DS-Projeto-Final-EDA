@@ -56,6 +56,7 @@
 \usepackage{algpseudocode}%
 \usepackage{listings}%
 \usepackage{indentfirst}
+\usepackage{placeins}
 %%%%
 
 %%%%%=============================================================================%%%%
@@ -186,13 +187,24 @@ A execução dessa pesquisa será realizada primáriamente atráves de programas
 
 \subsection{Fonte de dados}
 
-Na fonte de dados, portal INMET, são disponibilizados arquivos compactados por ano, de 2000 a 2026, contendo nesses arquivos .csv(comma-separated values) contendo, individualmente, dados de identificador, localização administrativa e geográfica da estação automática, assim como dados de precipitação, pressão, radiação, temperatura, umidade e ventos, coletados idealmente a cada hora durante todo o ano.
+Na fonte de dados, portal INMET, são disponibilizados arquivos compactados por ano, de 2000 a 2026, contendo nesses arquivos .csv(comma-separated values), como visto na imagem \ref{fig:exemploBruto} contendo, individualmente, dados de identificador, localização administrativa e geográfica da estação automática, assim como dados de precipitação, pressão, radiação, temperatura, umidade e ventos, coletados idealmente a cada hora durante todo o ano.
 
 Esses dados, porém, não foram coletados e catalogados perfeitamente, notando-se que um número extremamente pequeno de estações possuem dados em 2000, apenas 5, com nenhuma dessas possuindo dados anteriores a maio do mesmo ano, em comparação com 2026, o qual possui leituras automáticas de 639 estações. Também foi percebido que uma parcela das medições continha valores númericos absurdos ou impossíveis, de -9999, notando ausência dessa medição na especifica data, horario e local.
 
 Outros problemas menores detectados foram leves inconsistências na nomenclatura de colunas, ambas internas e entre tabelas, diferenças nas organizações de diretórios dos dados baixados, e também arquivos com tamanhos maiores que suportados pelo repositório utilizado, GitHub.
 
 Os problemas de consistência e completude dos dados serão tratados nos próximos tópicos, porém a equipe optou por não diretamente solucionar a dificuldade de publicar os dados de entrada através do repositório escolhido, dando outros pesquisadores a tarefa de realizar o download desses caso queiram reproduzir a análise, com o objetivo de causar com que estudos futuros sejam feitos com dados mais atualizados, destacando-se que as leituras do ano de 2026 não estavam completas pois o estudo foi realizado antes desse ano ter se completado, assim como possibilitar maior grau de confiança da veracidade dos dados.
+
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figs/exemploBruto.png}
+    \caption{Exemplo de organização dos arquivos brutos de dados, ano de 2025.}
+    \label{fig:exemploBruto}
+\end{figure}
+
+\FloatBarrier
+
 
 
 \subsection{Tratamento de dados}
@@ -203,11 +215,9 @@ O primeiro passo de manipulação e tratamento dos dados de observações meteor
 
 Nesse passo, inicialmente, são localizados todos os arquivos relevantes à estação A705 através de uma busca recursiva pela string \textit{"A705\_BAURU"}, comum a todos os arquivos desejados, solucionando inconsistências de organização e nomenclatura dos arquivos, dado que as tabelas de observações estavam inconsistentemente dentro de um ou dois diretórios de profundidade do arquivo anual baixado, e eram nomeados com as datas de primeira e última observação. Através do nome, é determinado o ano de coleta dos dados, e identificado quais estão faltantes.
 
-Em seguida, houve a renomeação de todas as colunas relevantes dos arquivos para o mesmo formato utilizando prefixos comuns, manualmente selecionados, entre mesmas medidas de diferentes anos. 
+Em seguida, houve a renomeação de todas as colunas relevantes dos arquivos para o mesmo formato utilizando prefixos comuns, manualmente selecionados, entre mesmas medidas de diferentes anos. Por fim dados com valores de \textit{-9999} e \textit{-9999.0} são substituidos constantes \textit{nan}
 
-Posteriormente, os horários são convertidos para o padrão \textit{UTC}(Coordenação de Tempo Universal)
-
-A verificação da execução correta das etapas anteriores ocorre pela contagem dos anos faltantes e da quantidade de colunas encontradas e extraidas, como mostrada na figura \ref{fig:padronizacao}
+A verificação da execução correta das etapas anteriores ocorre pela contagem dos anos faltantes e da quantidade de colunas encontradas e extraidas, como mostrada na figura \ref{fig:padronizacao}.
 
 Essa normalização é útil para garantir agrupamento de medidas similares, evitando que dados incorretamente armazenados afetem o resultado a pesquisa.
 
@@ -219,16 +229,60 @@ Essa normalização é útil para garantir agrupamento de medidas similares, evi
     \label{fig:padronizacao}
 \end{figure}
 
-\clearpage
+\FloatBarrier
 
 
-\subsubsection{}
+\subsubsection{Validação das entradas}
+
+Para as entradas padronizadas, são então verificadas suas validades ao rejeitar possíveis valores incorretos ou falhos que não podem ser confiavelmente corrigidos ou utilizados.
+
+As datas e horas armazenadas são convertidas para um formato padrão, como UTC, e então verificadas por valores impossíveis(negativos ou maiores que possível). As entradas válidas então recebem novas colunas para outros formatos e fusos, como em string e data local. Ao fim dessa etapa, escopo temporal é revalidado para os anos de 2002-2025, com resultados visiveis na imagem \ref{fig:UTC}.
+
+Em seguida, valores de meteorologia altamente improváveis e impossíveis são removidos, considerando altamente improvável temperaturas menores que -10ºC e maiores que 50ºC, e impossíveis precipitações negativas e outros valores onde mínima é inferior a máxima.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figs/UTC.png}
+    \caption{Colunas e seus valores dos primeiros dados encontrados da estação A705 após conversão temporal.}
+    \label{fig:UTC}
+\end{figure}
+
+\FloatBarrier
+
+
+
+\subsubsection{Agrupação}
+
+Além das validações de valores de entrada, foi executada também a validação após agrupação em dias, meses e anos dos dados.
+
+Com os dados agrupados com as três unidades de tempo citadas, houve a remoção dos dias com menos que 22 medições(~90\% das 24 máximas), e dos anos com menos de 90\% de dias válidos. Valor de 90\% foi escolhido anteriormente à análise para evitar enviésamentos, como \textit{cherry-picking}, porém algumas análises menos sensíveis poderão usar anos válidos com taxa de 80\% de dias válidos. Catalogação dos anos válidos visível na imagem \ref{fig:anos}.
+
+Por fim, bases de dados padronizadas, tratadas, validadas e agrupadas por foram armazenadas como dados processados, organizados por dias, meses e anos.
+
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figs/anosvalidos.png}
+    \caption{Anos considerados válidos sob cortes de 80\% e 90\% de dias válidos.}
+    \label{fig:anos}
+\end{figure}
+
+\FloatBarrier
+
+
+
+\subsection{Estatistica Descritiva}
+
+
+
 
 \begin{appendices}
 
-\section{Section title of first appendix}\label{secA1}
+\section{Repositório}\label{secA1}
 
-An appendix contains supplementary information that is not an essential part of the text itself but which may be helpful in providing a more comprehensive understanding of the research problem or it is information that is too cumbersome to be included in the body of the paper.
+Link do repositório GitHub onde o código utilizado é versionado e disponibilizado:
+
+https://github.com/GabrielNaka/DS-Projeto-Final-EDA.git
 
 %%=============================================%%
 %% For submissions to Nature Portfolio Journals %%
