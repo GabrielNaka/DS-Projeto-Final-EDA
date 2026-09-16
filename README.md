@@ -7,16 +7,6 @@ Thiago Toreto Damaceno de Souza - 241026164
 
 -------------------------------------------------------
 
-
-Dados providos publicamente pelo INMET - Instituto Nacional de Meteorologia
-https://portal.inmet.gov.br/dadoshistoricos
-Acesso em 13/09/2026, dados de 07/05/2000 - 31/08/2026
-
-
-Arquivos brutos de dados muito grandes
-compactado    1.78 GB
-descompactado 7.28 GB
-
 # Mudança climática em Bauru — estação INMET A705
 
 Projeto de ciência de dados que investiga se a temperatura e o padrão de chuvas da estação automática A705, em Bauru (SP), apresentaram tendência entre 2002 e 2025.

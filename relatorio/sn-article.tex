@@ -55,6 +55,7 @@
 \usepackage{algorithmicx}%
 \usepackage{algpseudocode}%
 \usepackage{listings}%
+\usepackage{indentfirst}
 %%%%
 
 %%%%%=============================================================================%%%%
@@ -122,7 +123,7 @@
 
 %\abstract{The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. Authors are advised to check the author instructions for the journal they are submitting to for word limits and if structural elements like subheadings, citations, or equations are permitted.}
 
-\abstract{Esse trabalho busca realizar uma análise exploratória(EDA) para estudar possíveis mudanças climáticas significativas de temperatura e condições de precipitação durante o período de 2000-2026 no Brasil, assim como o impacto dessa situação para construção de infraestrutura}
+\abstract{Esse trabalho busca realizar uma análise exploratória para estudar possíveis mudanças climáticas significativas de temperatura e condições de precipitação durante o período de 2000-2026 no Brasil, assim como o impacto dessa situação para construção de infraestrutura}
 
 %%================================%%
 %% Sample for structured abstract %%
@@ -136,7 +137,7 @@
 % 
 % \textbf{Conclusion:} The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. The abstract must not include subheadings (unless expressly permitted in the journal's Instructions to Authors), equations or citations. As a guide the abstract should not exceed 200 words. Most journals do not set a hard limit however authors are advised to check the author instructions for the journal they are submitting to.}
 
-\keywords{EDA, mudança climática, big data, INMET}
+\keywords{EDA, mudança climática, INMET}
 
 %%\pacs[JEL Classification]{D8, H51}
 
@@ -146,13 +147,30 @@
 
 \section{Introduction}\label{sec1}
 
-The Introduction section, of referenced text \cite{bib1} expands on the background of the work (some overlap with the Abstract is acceptable). The introduction should not include subheadings.
+Esse trabalho busca realizar uma análise exploratória de dados(EDA) para estudar possibilidade de mudanças significativas no padrão climático, especificamente de temperatura e precipitação, de uma região ao longo dos anos, assim como as possíveis repercussões disso para o planejamento urbano e projetos públicos de infraestrutura.
 
-Springer Nature does not impose a strict layout as standard however authors are advised to check the individual requirements for the journal they are planning to submit to as there may be journal-level preferences. When preparing your text please also be aware that some stylistic choices are not supported in full text XML (publication version), including coloured font. These will not be replicated in the typeset article if it is accepted. 
+Devido ao requerimento de estudo de apenas uma região, assim como o fato de que diferenças significativas de região de análise podem contaminar o resultado final ao agrupar incorretamente ambientes e situações diversas e não relacionadas, o escopo do estudo se limitará aos dados obtidos pelo portal do INMET referentes à estação A705 localizada em Bauru, escolhida por conveniência, durante os anos de 2002 a 2025, assim como às estações A725, A737, A741, localizadas em Avaré, Ibitinga e Barra Bonita, respectivamente, durante os anos de 2009 a 2025. Essas 3 cidades foram escolhidas por serem consideradas como representantes de uma \textit{região}, devido a proximidade com a cidade de Bauru.
 
-\section{Results}\label{sec2}
+O trabalho foi feito utilizando arquivos Jupyter Notebook, com extensão .ipynb, para organizar e realizar códigos em Python
 
-Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text.
+
+
+\section{Desenvolvimento}\label{sec2}
+
+\subsection{Fonte de dados}
+
+O portal do INMET foi utilizado como fonte de dados por ser uma fonte grande, acessível e consistente dos dados relevantes à pesquisa. O Instituto Nacional de Meteorologia disponibiliza em seu portal os dados históricos de medições horárias\cite{bib1}. São disponibilizados arquivos compactados por ano, de 2000 a 2026, contendo nesses arquivos .csv(comma-separated values) contendo, individualmente, dados de identificador, localização politica e geográfica da estação automática, assim como dados de precipitação, pressão, radiação, temperatura, umidade e ventos, coletados idealmente a cada hora durante todo o ano.
+
+Esses dados, porém, não foram coletados e catalogados perfeitamente, notando-se que um número extremamente pequeno de estações possuem dados em 2000, apenas 5, com nenhuma dessas possuindo dados anteriores a maio do mesmo ano, em comparação com 2026, o qual possui leituras automáticas de 639 estações. Também foi percebido que uma parcela das medições continha valores númericos absurdos ou impossíveis, de -9999, notando ausência dessa medição na especifica data, horario e local.
+
+Outros problemas menores detectados foram leves inconsistências na nomenclatura de colunas, ambas internas e entre tabelas, e arquivos com tamanhos maiores que suportados pelo repositório utilizado, github.
+
+Apesar da estação A705 ter sido escolhida por conveniência, as outras estações, A725, A737, A741, foram escolhidas por proximidade com A705, distância de corte escolhida como 100km. É notável que uma quinta estação, A763 de Marília, esteve dentro da distância de corte, mas foi mais distante que as outras, e também possuia medições iniciadas em primeiro de janeiro apenas a partir de 2018, e logo foi rejeitada. Análise das estações foi realizada via script utilizando o catálogo de estações automáticas do INMET\cite{bib2}, o qual centraliza e simplifica informações que estariam de outra forma distribuidas e com menor acessibilidade.
+
+
+\subsection{Tratamento de dados}
+
+
 
 \section{This is an example for first level head---section head}\label{sec3}
 
