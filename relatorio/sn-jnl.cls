@@ -417,7 +417,7 @@
 \renewcommand\figurename{Fig.}% defined as per springer style 
 \renewcommand\tablename{Table}%
 \renewcommand\appendixname{Appendix}%
-\renewcommand\abstractname{Abstract}%
+\renewcommand\abstractname{Resumo}%
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%% Article Front Matter %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %

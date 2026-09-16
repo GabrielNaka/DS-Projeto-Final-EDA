@@ -158,18 +158,18 @@ O planejamento urbano e a construção de infraestrutura são fortemente afetado
 
 Considerando esses fatores, a prefeitura municipal de Bauru, São Paulo, demonstrou interesse em realizar um estudo EDA a respeito das condições meteorológicas de temperatura e precipitação da região para melhor poder realizar decisões de planejamento urbano a médio e longo prazo.
 
-Portanto, esse trabalho busca realizar uma análise para estudar essa possibilidade da existência de tendências significativas de mudanças climáticas, e comprová-las ou disprová-las estatisticamente. O escopo do estudo se delimitou às leituras horárias disponibilizadas pelo INMET\cite{bib1} relativos aos anos completos de 2002 a 2025 coletados pela estação automática A705, localizada no lado sul da cidade de Bauru, em proximidade ao Departamento de Educação Física da Universidade Estadual Paulista "Júlio de Mesquita Filho"(UNESP), como visto na imagem \ref{fig:estacoes}.
+Portanto, esse trabalho busca realizar uma análise para estudar essa possibilidade da existência de tendências significativas de mudanças climáticas, e comprová-las ou disprová-las estatisticamente. O escopo do estudo se delimitou às leituras horárias disponibilizadas pelo portal INMET(Instituto Nacional de Meteorologia)\cite{bib1} relativos aos anos completos de 2002 a 2025 coletados pela estação automática A705, localizada no lado sul da cidade de Bauru, em proximidade ao Departamento de Educação Física da Universidade Estadual Paulista "Júlio de Mesquita Filho"(UNESP), como visto na imagem \ref{fig:mapa}.
 
 A delimitação temporal aos anos de 2002 a 2025 ocorreu, apesar da base de dados oferecer leituras dos anos de 2000 a 2026, pois foram nesses anos que a estação sob estudo realizou leituras durante todos os períodos do ano, com 2000 não apresentando dados, e com 2001 e 2026 não apresentando  dados de todos os meses. O delimitamento espacial da estação A705, por sua vez, foi causado pela inadequação das outras estações, causadas por fatores como menor variabilidade de dados coletados, menor tempo de funcionamento, ou diferenças geográficas as tornarem menos consistentes e relevantes à ánalise em questão. 
-Algumas das estações consideradas estão mostradas na imagem \ref{fig:estacoes}, contendo as localidades das estações, código de identificação, distância até o ponto primário A705, assim como o primeiro ano onde a estação esteve ativa durante todos os períodos do ano. A figura representa todas estações com distância de Bauru inferior a 100km, e demonstra, além dessa quantidade ser pequena, as estações apresentam significativamente menos anos completos, fato que prejudicaria severamente o estudo ao reduzir o período em que podem ser detectadas tendências, reduzindo precisão.
+Algumas das estações consideradas estão mostradas na imagem \ref{fig:estacoes}, contendo as localidades das estações, código de identificação, distância até o ponto primário A705, assim como o primeiro ano onde a estação esteve ativa durante todos os períodos do ano. A figura representa todas estações\cite{bib2} com distância de Bauru inferior a 100km, e demonstra, além dessa quantidade ser pequena, as estações apresentam significativamente menos anos completos, fato que prejudicaria severamente o estudo ao reduzir o período em que podem ser detectadas tendências, reduzindo precisão.
 
-A execução dessa pesquisa será realizada primáriamente atráves de programas em linguagem \textit{Python}, em conjunto com \textit{Jupyter Notebook} para organizar e documentar os códigos, o qual serão disponibilizados para verificação e análise dos dados por outros pesquisadores atráves de repositórios \textit{GitHub}.
+A execução dessa pesquisa será realizada primáriamente atráves de programas em linguagem \textit{Python}, em conjunto com \textit{Jupyter Notebook} para organizar e documentar os códigos, o qual serão disponibilizados e versionados atráves de repositórios \textit{GitHub}.
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.9\textwidth]{figs/map.png}
     \caption{Mapa provido pelo INMET, com a estação A705 marcada com um circulo verde.}
-    \label{fig:estacoes}
+    \label{fig:mapa}
 \end{figure}
 
 \begin{figure}[htbp]
@@ -179,26 +179,50 @@ A execução dessa pesquisa será realizada primáriamente atráves de programas
     \label{fig:estacoes}
 \end{figure}
 
+\clearpage
+
 
 \section{Desenvolvimento}\label{sec2}
 
 \subsection{Fonte de dados}
 
-O portal do INMET foi utilizado como fonte de dados por ser uma fonte grande, acessível e consistente dos dados relevantes à pesquisa. O Instituto Nacional de Meteorologia disponibiliza em seu portal os dados históricos de medições horárias\cite{bib1}. São disponibilizados arquivos compactados por ano, de 2000 a 2026, contendo nesses arquivos .csv(comma-separated values) contendo, individualmente, dados de identificador, localização politica e geográfica da estação automática, assim como dados de precipitação, pressão, radiação, temperatura, umidade e ventos, coletados idealmente a cada hora durante todo o ano.
+Na fonte de dados, portal INMET, são disponibilizados arquivos compactados por ano, de 2000 a 2026, contendo nesses arquivos .csv(comma-separated values) contendo, individualmente, dados de identificador, localização administrativa e geográfica da estação automática, assim como dados de precipitação, pressão, radiação, temperatura, umidade e ventos, coletados idealmente a cada hora durante todo o ano.
 
 Esses dados, porém, não foram coletados e catalogados perfeitamente, notando-se que um número extremamente pequeno de estações possuem dados em 2000, apenas 5, com nenhuma dessas possuindo dados anteriores a maio do mesmo ano, em comparação com 2026, o qual possui leituras automáticas de 639 estações. Também foi percebido que uma parcela das medições continha valores númericos absurdos ou impossíveis, de -9999, notando ausência dessa medição na especifica data, horario e local.
 
-Outros problemas menores detectados foram leves inconsistências na nomenclatura de colunas, ambas internas e entre tabelas, e arquivos com tamanhos maiores que suportados pelo repositório utilizado, github.
+Outros problemas menores detectados foram leves inconsistências na nomenclatura de colunas, ambas internas e entre tabelas, diferenças nas organizações de diretórios dos dados baixados, e também arquivos com tamanhos maiores que suportados pelo repositório utilizado, GitHub.
 
-Apesar da estação A705 ter sido escolhida por conveniência, as outras estações, A725, A737, A741, foram escolhidas por proximidade com A705, como visto na imagem \ref{fig:estacoes}, distância de corte escolhida como 100km. É notável que uma quinta estação, A763 de Marília, esteve dentro da distância de corte, mas foi mais distante que as outras, e também possuia medições iniciadas em primeiro de janeiro apenas a partir de 2018, e logo foi rejeitada. Análise das estações foi realizada via script utilizando o catálogo de estações automáticas do INMET\cite{bib2}, o qual centraliza e simplifica informações que estariam de outra forma distribuidas e com menor acessibilidade.
-
+Os problemas de consistência e completude dos dados serão tratados nos próximos tópicos, porém a equipe optou por não diretamente solucionar a dificuldade de publicar os dados de entrada através do repositório escolhido, dando outros pesquisadores a tarefa de realizar o download desses caso queiram reproduzir a análise, com o objetivo de causar com que estudos futuros sejam feitos com dados mais atualizados, destacando-se que as leituras do ano de 2026 não estavam completas pois o estudo foi realizado antes desse ano ter se completado, assim como possibilitar maior grau de confiança da veracidade dos dados.
 
 
 \subsection{Tratamento de dados}
 
-\subsubsection{Padronização de colunas}
+\subsubsection{Normalização e Consolidação}
 
-Algumas colunas são não padronizadas, contendo nomes
+O primeiro passo de manipulação e tratamento dos dados de observações meteorológicas envolveu padronizações diversas de nomenclatura das variáveis e suas unidades.
+
+Nesse passo, inicialmente, são localizados todos os arquivos relevantes à estação A705 através de uma busca recursiva pela string \textit{"A705\_BAURU"}, comum a todos os arquivos desejados, solucionando inconsistências de organização e nomenclatura dos arquivos, dado que as tabelas de observações estavam inconsistentemente dentro de um ou dois diretórios de profundidade do arquivo anual baixado, e eram nomeados com as datas de primeira e última observação. Através do nome, é determinado o ano de coleta dos dados, e identificado quais estão faltantes.
+
+Em seguida, houve a renomeação de todas as colunas relevantes dos arquivos para o mesmo formato utilizando prefixos comuns, manualmente selecionados, entre mesmas medidas de diferentes anos. 
+
+Posteriormente, os horários são convertidos para o padrão \textit{UTC}(Coordenação de Tempo Universal)
+
+A verificação da execução correta das etapas anteriores ocorre pela contagem dos anos faltantes e da quantidade de colunas encontradas e extraidas, como mostrada na figura \ref{fig:padronizacao}
+
+Essa normalização é útil para garantir agrupamento de medidas similares, evitando que dados incorretamente armazenados afetem o resultado a pesquisa.
+
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figs/padronizacao.png}
+    \caption{Colunas e seus valores dos primeiros dados encontrados da estação A705 após padronização.}
+    \label{fig:padronizacao}
+\end{figure}
+
+\clearpage
+
+
+\subsubsection{}
 
 \begin{appendices}
 
