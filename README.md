@@ -77,3 +77,21 @@ code .
 ```
 
 O notebook não grava esse caminho nos arquivos do projeto. Se a variável não estiver definida, `data/raw/` será usada automaticamente.
+
+## Compilação do relatório
+
+O relatório está em `relatorio/sn-article.tex` e utiliza o modelo Springer Nature.
+
+### Requisitos no Windows
+
+- [MiKTeX](https://miktex.org/download)
+- [Strawberry Perl](https://download.cnet.com/strawberry-perl-64-bit/3000-2212_4-75808033.html)
+- Extensão LaTeX Workshop no VS Code
+
+Após instalar, feche e abra novamente o VS Code. Verifique no terminal:
+
+```powershell
+pdflatex --version
+bibtex --version
+perl --version
+latexmk --version
