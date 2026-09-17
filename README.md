@@ -5,7 +5,7 @@ Entrega do T2 para a matéria de Ciência de Dados
 Gabriel Uemura Naka - 241024773
 Thiago Toreto Damaceno de Souza - 241026164
 
--------------------------------------------------------
+---
 
 # Mudança climática em Bauru — estação INMET A705
 
@@ -78,6 +78,20 @@ code .
 
 O notebook não grava esse caminho nos arquivos do projeto. Se a variável não estiver definida, `data/raw/` será usada automaticamente.
 
+## Resultados principais
+
+Com cobertura mínima de 90%, foram analisados 15 anos para temperatura e 14 para chuva:
+
+- temperatura média anual: +0,54 °C por década (IC95%: +0,15 a +0,94; p = 0,011; R² = 0,401);
+- precipitação média por dia válido: −0,68 mm/dia por década (IC95%: −1,12 a −0,23; p = 0,006; R² = 0,477);
+- proporção de dias chuvosos: sem tendência estatisticamente significativa (p = 0,205).
+
+O cenário de sensibilidade com 80% de cobertura preservou os sinais e as conclusões de significância.
+
+## Limitações
+
+A conclusão é local à estação A705. A série tem 24 anos e não deve ser chamada de normal climatológica padrão, que utiliza períodos de 30 anos segundo a [Organização Meteorológica Mundial](https://community.wmo.int/site/knowledge-hub/programmes-and-initiatives/climate-services/wmo-climatological-normals). Lacunas reduziram a quantidade de anos elegíveis. Regressões lineares identificam associações temporais, não demonstram causalidade e não controlam alterações de instrumentação, entorno ou urbanização.
+
 ## Compilação do relatório
 
 O relatório está em `relatorio/sn-article.tex` e utiliza o modelo Springer Nature.
@@ -95,3 +109,4 @@ pdflatex --version
 bibtex --version
 perl --version
 latexmk --version
+```
