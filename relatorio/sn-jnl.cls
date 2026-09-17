@@ -413,10 +413,10 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%% Titles %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-\renewcommand\refname{References}%
+\renewcommand\refname{Referências}%
 \renewcommand\figurename{Fig.}% defined as per springer style 
 \renewcommand\tablename{Table}%
-\renewcommand\appendixname{Appendix}%
+\renewcommand\appendixname{Apêndice}%
 \renewcommand\abstractname{Resumo}%
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%% Article Front Matter %%%%%%%%%%%%%%%%%%%%%%%%%%%

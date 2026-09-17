@@ -187,7 +187,7 @@ A execução dessa pesquisa será realizada primáriamente atráves de programas
 
 \subsection{Fonte de dados}
 
-Na fonte de dados, portal INMET, são disponibilizados arquivos compactados por ano, de 2000 a 2026, contendo nesses arquivos .csv(comma-separated values), como visto na imagem \ref{fig:exemploBruto} contendo, individualmente, dados de identificador, localização administrativa e geográfica da estação automática, assim como dados de precipitação, pressão, radiação, temperatura, umidade e ventos, coletados idealmente a cada hora durante todo o ano.
+Na fonte de dados, portal INMET, são disponibilizados arquivos compactados por ano, de 2000 a 2026, contendo nesses arquivos .csv(comma-separated values), como visto na imagem \ref{fig:exemploBruto}, contendo, individualmente, dados de identificador, localização administrativa e geográfica da estação automática, assim como dados de precipitação, pressão, radiação, temperatura, umidade e ventos, coletados idealmente a cada hora durante todo o ano.
 
 Esses dados, porém, não foram coletados e catalogados perfeitamente, notando-se que um número extremamente pequeno de estações possuem dados em 2000, apenas 5, com nenhuma dessas possuindo dados anteriores a maio do mesmo ano, em comparação com 2026, o qual possui leituras automáticas de 639 estações. Também foi percebido que uma parcela das medições continha valores númericos absurdos ou impossíveis, de -9999, notando ausência dessa medição na especifica data, horario e local.
 
@@ -207,7 +207,7 @@ Os problemas de consistência e completude dos dados serão tratados nos próxim
 
 
 
-\subsection{Tratamento de dados}
+\subsection{Processamento de dados}
 
 \subsubsection{Normalização e Consolidação}
 
@@ -273,6 +273,65 @@ Por fim, bases de dados padronizadas, tratadas, validadas e agrupadas por foram 
 
 \subsection{Estatistica Descritiva}
 
+\subsubsection{Análise básica}
+
+Para os dados obtidos após o processamento, foram aplicadas as funções básicas de estatistica: tamanho da amostra, média, desvio padrão, minímo, quartis e máximo. Resultados obtidos visíveis na imagem \ref{fig:estatistica}.
+
+A análise dos resultados obtidos por essas funções aponta grande variação de temperatura e precipitação entre os anos. Nota-se que várias das medidas de \textit{std}, desvio padrão, representa uma fração uma fração significativa de \textit{mean}, média, assim como alta diferença relativa entre \textit{25\%} e \textit{75\%}, os quartis ímpares.
+
+Apenas essas funções, não são, porém, suficientes para apontar tendência temporais de crescimento ou decrescimento dessas medidas.
+
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{figs/estatistica.png}
+    \caption{Dados agrupados por anos válidos, aplicados funções básicas de estátistica.}
+    \label{fig:estatistica}
+\end{figure}
+
+\FloatBarrier
+
+
+\subsubsection{Análise Temporal}
+
+Para melhor realizar a visualização e análise da evolução meteorológica da região, foram realizados \textit{plots} das medidas meteorológicas em função de tempo, visiveis nas imagens \ref{plt:temperatura}, \ref{plt:precipitacao}, \ref{plt:ciclo} e \ref{plt:boxTemp}. Os plots anuais \ref{plt:temperatura}, \ref{plt:precipitacao} e \ref{plt:boxTemp} apresentam, no escopo de estudo A705 e 2002-2025, uma tendência forte, mas inconsistente, de aumento anual da temperatura média, e redução anual de dias \textit{chuvosos}(considerados \textit{chuvosos} os dias os dias com precipitação superior a 1mm)
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figs/plot1.png}
+    \caption{Evolução anual da temperatura média.}
+    \label{plt:temperatura}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figs/plot2.png}
+    \caption{Evolução anual da precipitação média diária e proporção dos dias com quantidades chuva.}
+    \label{plt:precipitacao}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figs/plot3.png}
+    \caption{Variação de temperatura e precipitação em função dos meses do ano.}
+    \label{plt:ciclo}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figs/plot4.png}
+    \caption{Box plots das temperaturas médias das metades do periodo.}
+    \label{plt:boxTemp}
+\end{figure}
+
+\FloatBarrier
+
+
+
+
+\clearpage
+
+\section{Conclusão}
 
 
 
