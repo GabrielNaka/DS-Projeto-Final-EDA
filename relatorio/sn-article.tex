@@ -124,7 +124,7 @@
 
 %\abstract{The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. Authors are advised to check the author instructions for the journal they are submitting to for word limits and if structural elements like subheadings, citations, or equations are permitted.}
 
-\abstract{Esse trabalho busca realizar uma \textit{análise exploratória de dados}(EDA) para analisar série histórica de condições meteorológicas de temperatura e precipitação providas por medições horárias da estação automática A705, localizada em Bauru(SP), construída e mantida pelo Instituto Nacional de Meteorologia(INMET), considerando as observações dos anos de 2002 a 2025. A análise tem como objetivo confirmar ou rejeitar estatisticamente a possibilidade de mudanças significativas das condições climáticas da região, e considerar como o resultado impactaria decisões de planejamento de infraestrutura local. }
+\abstract{Esse trabalho busca realizar uma \textit{análise exploratória de dados}(EDA) para analisar série histórica de condições meteorológicas de temperatura e precipitação providas por medições horárias da estação automática A705, localizada em Bauru(SP), construída e mantida pelo Instituto Nacional de Meteorologia(INMET), considerando as observações dos anos de 2002 a 2025. A análise tem como objetivo confirmar ou rejeitar estatisticamente a possibilidade de mudanças significativas das condições climáticas da região, e considerar como o resultado impactaria decisões de planejamento de infraestrutura local. O trabalho conclui que há razão para preparar a infraestrutura para aumentos de temperatura no futuro, mas que essas previsões não são absolutas e mais estudos são necessários }
 
 %%================================%%
 %% Sample for structured abstract %%
@@ -139,7 +139,7 @@
 % \textbf{Conclusion:} The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. The abstract must not include subheadings (unless expressly permitted in the journal's Instructions to Authors), equations or citations. As a guide the abstract should not exceed 200 words. Most journals do not set a hard limit however authors are advised to check the author instructions for the journal they are submitting to.}
 
 
-\keywords{Análise exploratória de dados, mudança climática, INMET, Bauru, temperatura, precipitação}
+\keywords{Análise exploratória de dados, mudança climática, INMET, Bauru, temperatura, precipitação, planejamento urbano }
 
 %%\pacs[JEL Classification]{D8, H51}
 
@@ -185,7 +185,7 @@ A execução dessa pesquisa será realizada primáriamente atráves de programas
 
 \section{Desenvolvimento}\label{sec2}
 
-\subsection{Fonte de dados}
+\subsection{Fonte de Dados}
 
 Na fonte de dados, portal INMET, são disponibilizados arquivos compactados por ano, de 2000 a 2026, contendo nesses arquivos .csv(comma-separated values), como visto na imagem \ref{fig:exemploBruto}, contendo, individualmente, dados de identificador, localização administrativa e geográfica da estação automática, assim como dados de precipitação, pressão, radiação, temperatura, umidade e ventos, coletados idealmente a cada hora durante todo o ano.
 
@@ -207,7 +207,7 @@ Os problemas de consistência e completude dos dados serão tratados nos próxim
 
 
 
-\subsection{Processamento de dados}
+\subsection{Processamento de Dados}
 
 \subsubsection{Normalização e Consolidação}
 
@@ -232,7 +232,7 @@ Essa normalização é útil para garantir agrupamento de medidas similares, evi
 \FloatBarrier
 
 
-\subsubsection{Validação das entradas}
+\subsubsection{Validação das Entradas}
 
 Para as entradas padronizadas, são então verificadas suas validades ao rejeitar possíveis valores incorretos ou falhos que não podem ser confiavelmente corrigidos ou utilizados.
 
@@ -255,7 +255,7 @@ Em seguida, valores de meteorologia altamente improváveis e impossíveis são r
 
 Além das validações de valores de entrada, foi executada também a validação após agrupação em dias, meses e anos dos dados.
 
-Com os dados agrupados com as três unidades de tempo citadas, houve a remoção dos dias com menos que 22 medições(~90\% das 24 máximas), e dos anos com menos de 90\% de dias válidos. Valor de 90\% foi escolhido anteriormente à análise para evitar enviésamentos, como \textit{cherry-picking}, porém algumas análises menos sensíveis poderão usar anos válidos com taxa de 80\% de dias válidos. Catalogação dos anos válidos visível na imagem \ref{fig:anos}.
+Com os dados agrupados com as três unidades de tempo citadas, houve a remoção dos dias com menos que 22 medições(~90\% das 24 máximas), e dos anos com menos de 90\% de dias válidos. Valor de 90\% foi escolhido anteriormente à análise para evitar enviésamentos, como \textit{cherry-picking}. Também será calculado anos validos com corte de 80\% de dias válidos, com o objetivo de verificar a importância da taxa de corte. Catalogação dos anos válidos visível na imagem \ref{fig:anos}.
 
 Por fim, bases de dados padronizadas, tratadas, validadas e agrupadas por foram armazenadas como dados processados, organizados por dias, meses e anos.
 
@@ -271,7 +271,7 @@ Por fim, bases de dados padronizadas, tratadas, validadas e agrupadas por foram 
 
 
 
-\subsection{Estatistica Descritiva}
+\subsection{Estatistica e Análise}
 
 \subsubsection{Análise básica}
 
@@ -293,8 +293,9 @@ Apenas essas funções, não são, porém, suficientes para apontar tendência t
 
 
 \subsubsection{Análise Temporal}
+\label{sec:EDAt}
 
-Para melhor realizar a visualização e análise da evolução meteorológica da região, foram realizados \textit{plots} das medidas meteorológicas em função de tempo, visiveis nas imagens \ref{plt:temperatura}, \ref{plt:precipitacao}, \ref{plt:ciclo} e \ref{plt:boxTemp}. Os plots anuais \ref{plt:temperatura}, \ref{plt:precipitacao} e \ref{plt:boxTemp} apresentam, no escopo de estudo A705 e 2002-2025, uma tendência forte, mas inconsistente, de aumento anual da temperatura média, e redução anual de dias \textit{chuvosos}(considerados \textit{chuvosos} os dias os dias com precipitação superior a 1mm)
+Para melhor realizar a visualização e análise da evolução meteorológica da região, foram realizados \textit{plots} das medidas meteorológicas em função de tempo, visiveis nas imagens \ref{plt:temperatura}, \ref{plt:precipitacao}, \ref{plt:ciclo} e \ref{plt:boxTemp}. Os plots anuais \ref{plt:temperatura}, \ref{plt:precipitacao} e \ref{plt:boxTemp} apresentam, no escopo de estudo A705 e 2002-2025, uma tendência forte, mas inconsistente, de aumento anual da temperatura média, e redução anual de dias \textit{chuvosos}(considerados \textit{chuvosos} os dias os dias com precipitação superior a 1mm).
 
 \begin{figure}[htbp]
     \centering
@@ -327,11 +328,61 @@ Para melhor realizar a visualização e análise da evolução meteorológica da
 \FloatBarrier
 
 
+\subsubsection{Teste de Hipótese}
+\label{sec:hip}
+
+Para verificar formal e matemáticamente a tendência observada via plots no item \ref{sec:EDAt}, foi utilizado regressão OLS(Ordinary Least Squares) em cada indicador, para realizar teste de hipótese bilateral contra a hipótese nula de que as condições climáticas não se alteraram. Utilizou-se nível se significância de 5\% e taxa de cobertura de validação do ano de 90\% para o teste principal, e 80\% para verificação da importância da taxa de corte. Resultados visiveis na imagem \ref{fig:hipotese}.
+
+Para a cobertura de 90\% no indicador de temperatura média anual, a regressão estimou um crescimento anual de 0.0544ºC, ou 0.54ºC por década. Essa inclinação é estatisticamente significativa ao nível de 5\%, com o valor p = 0.0113 e intervalo de confiança entre 0.14ºC e 0.94ºC por década, e logo, não incluindo 0. Esses dados apontam que o aumento de temperatura, no escopo de estudo, é muito improvável de ter acontecido aleatóriamente, aceitando a hipótese alternativa de tendência de crescimento da temperatura média. 
+
+Por outro lado, o indicador de precipitação média diária para mesma cobertura apresenta inclinação anual estimada de redução de 0.0678mm diários. Dado o valor p de 0.0062, também se identifica inclinação estatisticamente significante, com intervalo de confiança entre -0.2315mm e -1.1236mm, não incluindo 0, formando outra aceitação da hipótese alternativa.
+
+Apesar das outras duas análises dos indicadores, a proporção de dias chuvosos a 90\% de cobertura não aceita hipótese nula. Esse critério tem como estimativa inclinação anual negativa de 0.0017 dias, possuindo valor p alto de 0.2047 e intervalo de confiança abrangindo 0.
+
+Ao realizar os mesmos testes com critério de anos válidos em 80\%, com o objetivo de testar a importância do valor de corte, percebeu-se que, apesar de diferenças nos valores obtidos, o resultado qualitativo se manteve o mesmo: alterar o critério não alterou sinais, não mudando as conclusões de aceitação de hipóteses nulas e alternativas. Essa característica não disprova a importância da escolha do critério, mas apenas mostra que entre ambos valores testados, não há diferenças qualitativas significantes.
+
+Como última análise da pesquisa, realizou-se o estudo dos resíduos, Q-Q plots(Quantile-Quantile Plot) e Distância de Cook, vistos na figura \ref{fig:QQ}, para avaliar a consistência dos dados e como a pequena amostra de 14 ou 15 observações anuais pode afetar os testes de hipótese. 
+
+Os valores registrados indicam Durbin–Watson aceitável para a maioria dos indicadores, porém atingiu 3.039 para precipitação média diária em 90\% de cobertura, apontando autocorrelação negativa forte. A distância de Cook identificou 2024 como ano influente para os modelos de temperatura, enquanto 2006 e 2007 aparecem como anos influentes no modelo de precipitação média diária. Esses diagnósticos não anulam os resultados, mas recomendam cautela ao extrapolar a inclinação para além da série observada.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figs/testeHipotese.png}
+    \caption{Tabelamento de alguns dos resultados do teste de hipótese da regressão dos indicadores.}
+    \label{fig:hipotese}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figs/plot5.png}
+    \caption{Diagnósticos dos modelos principais: resíduos versus ajustados, QQ-plots e distância de Cook.}
+    \label{fig:QQ}
+\end{figure}
+
 
 
 \clearpage
 
 \section{Conclusão}
+
+\subsection{Recomendações}
+
+A evidência estatística de aumento da temperatura média anual e a redução de precipitação diária média é consistente entre a análise visual, o modelo OLS e a análise de sensibilidade. Porém, o aumento de temperatura e redução das chuvas nas magnitudes calculadas não são garantidas, e devem ser interpretadas como as tendências especificamente do escopo do estudo: A cidade de Bauru durante os anos de 2002 a 2025.
+
+Mesmo com a falta de garantia dos resultados esperados, é possível apontar algumas recomendações para o planejamento urbano a médio e longo prazo, como medidas de arborização e sombreamento de áreas públicas, como em parques, pistas de caminhada e áreas de eventos, preparação de serviços e emergência para casos de insolação e desidratação, como vias de acesso exclusivo para ambulâncias e outros serviços de emergência durante meses de risco, monitoramento e fortalecimento dos reservatórios, estações de tratamento hídrico e similares, entre outros.
+
+
+\subsection{Limitações}
+
+A consideração das recomendações desse estudo deve ser feita com cautela, pois foi feita, por necessidade, utilizando dados de um período climaticamente curto de 24 anos, e apenas uma estação meteorológica automática, que esteve sujeita a falhas ou manutenções vezes o suficiente para invalidar vários dos poucos anos disponíveis para análise, e logo, afeta negativamente a confiança das conclusões.
+
+Dado as análises da seção \ref{sec:hip}, a baixa quantidade de amostras cria uma regressão instável e altamente sucetível à \textit{outliers} em anos específicos.
+
+Outros problemas encontrados derivam-se do fato de que as condições climáticas variam muito mais ao longo de um ano do que entre anos, como visto na imagem \ref{fig:ciclo}. Essa variabilidade sazonal não foi modelada por OLS.
+
+Futuros estudos na área beneficiariam de um número maior de estações distribuídas pela região, assim como de maior confiabilidade do funcionamento adequado dessas, maior duração, em anos, das observações totais e modelos que englobam estações do ano.
+
+
 
 
 

@@ -1,12 +1,15 @@
 \contentsline {section}{\numberline {1}Introdução}{3}{section.1}%
 \contentsline {section}{\numberline {2}Desenvolvimento}{5}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Fonte de dados}{5}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Processamento de dados}{6}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.1}Fonte de Dados}{5}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Processamento de Dados}{6}{subsection.2.2}%
 \contentsline {subsubsection}{\numberline {2.2.1}Normalização e Consolidação}{6}{subsubsection.2.2.1}%
-\contentsline {subsubsection}{\numberline {2.2.2}Validação das entradas}{6}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.2}Validação das Entradas}{6}{subsubsection.2.2.2}%
 \contentsline {subsubsection}{\numberline {2.2.3}Agrupação}{7}{subsubsection.2.2.3}%
-\contentsline {subsection}{\numberline {2.3}Estatistica Descritiva}{7}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.3}Estatistica e Análise}{7}{subsection.2.3}%
 \contentsline {subsubsection}{\numberline {2.3.1}Análise básica}{7}{subsubsection.2.3.1}%
 \contentsline {subsubsection}{\numberline {2.3.2}Análise Temporal}{8}{subsubsection.2.3.2}%
-\contentsline {section}{\numberline {3}Conclusão}{11}{section.3}%
-\contentsline {section}{\numberline {A}Repositório}{11}{appendix.a.A}%
+\contentsline {subsubsection}{\numberline {2.3.3}Teste de Hipótese}{10}{subsubsection.2.3.3}%
+\contentsline {section}{\numberline {3}Conclusão}{13}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Recomendações}{13}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Limitações}{13}{subsection.3.2}%
+\contentsline {section}{\numberline {A}Repositório}{13}{appendix.a.A}%
