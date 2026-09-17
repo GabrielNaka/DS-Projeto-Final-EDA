@@ -15,6 +15,14 @@ Projeto de ciência de dados que investiga se a temperatura e o padrão de chuva
 
 Há tendência estatisticamente relevante de aumento da temperatura ou mudança no padrão de chuvas na série histórica da estação A705?
 
+## Fonte dos dados
+
+- **Organização:** Instituto Nacional de Meteorologia (INMET)
+- **Conjunto de dados:** Dados Históricos Anuais
+- **Link:** [https://portal.inmet.gov.br/dadoshistoricos](https://portal.inmet.gov.br/dadoshistoricos)
+- **Data de download:** 13/09/2026
+- **Recorte utilizado:** estação automática A705 — Bauru (SP), período de 2002 a 2025
+
 ## Dados e critérios
 
 - Estação: A705 — Bauru (SP).
