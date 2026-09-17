@@ -750,7 +750,7 @@
 	\ifnum\emailcnt>0\relax%
            \ifx\corrauthemail\@empty\else{\ifnum\aucount>1*\fi}%
 	   Endereços de e-mail dos autores: \corrauthemail\par\fi%
-	   \ifx\authemail\@empty\else Contributing authors:\ \authemail\fi%
+	   \ifx\authemail\@empty\else Autores colaboradores:\ \authemail\fi%
         \fi%
         \ifequalcont{\par$^{\dagger}$\@equalconttext\par}\fi%
 	 \removelastskip\vskip24pt%
